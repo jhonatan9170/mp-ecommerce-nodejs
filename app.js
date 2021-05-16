@@ -3,11 +3,19 @@ var express = require('express');
 var exphbs  = require('express-handlebars');
 const mercadopago = require ('mercadopago');
 var port = process.env.PORT || 3000
-
 var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-mercadopago.configurations.setAccessToken("APP_USR-8208253118659647-112521-dd670f3fd6aa9147df51117701a2082e-677408439"); 
+mercadopago.configure({
+    integrator_id: 'dev_2e4ad5dd362f11eb809d0242ac130004',
+    access_token:"APP_USR-8208253118659647-112521-dd670f3fd6aa9147df51117701a2082e-677408439"
+});
+
+
+
+
+
+
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
@@ -21,8 +29,17 @@ app.get('/', function (req, res) {
 
 app.get('/detail', function (req, res) {
     res.render('detail', req.query);
-    console.log(req.query);
+
 });
+app.post('/ipn',(req,res)=>{
+    console.log(req.body);
+    console.log(req.body.data)
+
+    res.status(200);
+})
+
+
+
 app.post('/detail', function(req,res){
 
     let preference = {
@@ -77,9 +94,8 @@ app.post('/detail', function(req,res){
             "installments": 6
         },
 
-
-
          external_reference:"wily9170@gmail.com",
+         "notification_url": "https://jhonatan917-mp-commerce-nodejs.herokuapp.com/ipn",
      };
 
      console.log(preference);
