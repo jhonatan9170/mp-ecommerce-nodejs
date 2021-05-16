@@ -107,8 +107,6 @@ app.post('/detail', function(req,res){
          "notification_url": "https://jhonatan917-mp-commerce-nodejs.herokuapp.com/ipn",
      };
 
-     console.log(preference);
-
     mercadopago.preferences.create(preference)
     .then(function(response){
         res.redirect(response.body.init_point);
