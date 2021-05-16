@@ -32,14 +32,12 @@ app.get('/detail', function (req, res) {
 
 });
 app.post('/ipn',(req,res)=>{
-    console.log(req);
-    console.log(req.body);
-    console.log(req.body.data)
+    console.log(req.body.body);
     res.status(200);
     res.send(200)
 })
 app.get('/ipn',(req,res)=>{
-    console.log(req.body);
+    console.log(req.body.body);
     res.status(200);
     res.send(200)
 })
