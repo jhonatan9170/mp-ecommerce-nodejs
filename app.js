@@ -39,10 +39,7 @@ app.post('/ipn',(req,res)=>{
     res.send(200)
 })
 app.get('/ipn',(req,res)=>{
-    console.log(req);
     console.log(req.body);
-    console.log(req.body.data)
-
     res.status(200);
     res.send(200)
 })
