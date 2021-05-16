@@ -57,9 +57,9 @@ app.post('/detail', function(req,res){
         },
 
          back_urls: {
-             "success": "http://localhost:3000",
-             "failure": "http://localhost:3000",
-             "pending": "http://localhost:3000"
+             "success": "https://jhonatan917-mp-commerce-nodejs.herokuapp.com/",
+             "failure": "https://jhonatan917-mp-commerce-nodejs.herokuapp.com/",
+             "pending": "https://jhonatan917-mp-commerce-nodejs.herokuapp.com/"
          },
          auto_return: 'approved',
 
